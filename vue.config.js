@@ -14,6 +14,7 @@ module.exports = {
         short_name: "2048",
         description: "2048 puzzle game",
         background_color: "lightgray",
+        theme_color: "#edc02e",
         orientation: "portrait",
         display: "standalone",
         start_url: ".",
