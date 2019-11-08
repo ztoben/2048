@@ -3,7 +3,8 @@
     <div class="header">
       <h1>2048</h1>
       <div class="scores">
-        <h4>Score: {{ currentScore }}</h4>
+        <h4>Current Score: {{ currentScore }}</h4>
+        <h4>High Score: {{ highScore }}</h4>
       </div>
     </div>
     <Board v-if="board" :board="board" />
@@ -30,6 +31,7 @@ export default {
   data: function() {
     return {
       currentScore: 0,
+      highScore: 0,
       board: null,
       status: "playing"
     };
@@ -37,6 +39,21 @@ export default {
   created: function() {
     window.addEventListener("keydown", this.handleArrowKeys);
     this.board = initializeBoard(16);
+  },
+  mounted() {
+    if (localStorage.highScore) {
+      this.highScore = localStorage.highScore;
+    } else {
+      localStorage.highScore = 0;
+    }
+  },
+  watch: {
+    currentScore: function(newCurrentScore) {
+      if (newCurrentScore > localStorage.highScore) {
+        localStorage.highScore = newCurrentScore;
+        this.highScore = newCurrentScore;
+      }
+    }
   },
   methods: {
     reset: function() {
@@ -121,14 +138,14 @@ export default {
   .header {
     display: inline-flex;
     align-items: center;
-    max-width: 500px;
-    min-width: 250px;
+    max-width: 400px;
     width: 90%;
     justify-content: space-between;
 
     .scores {
       display: flex;
       flex-direction: column;
+      text-align: right;
 
       h4 {
         margin: 0;
@@ -137,8 +154,7 @@ export default {
   }
 
   .controls-container {
-    max-width: 500px;
-    min-width: 250px;
+    max-width: 400px;
     width: 90%;
     display: inline-flex;
     justify-content: flex-end;
