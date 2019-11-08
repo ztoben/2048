@@ -15,7 +15,9 @@ const colors = {
 function getColor(value) {
   if (value <= 2048) return colors[value];
 
-  return colors[value / 2048];
+  if (value / 2048 <= 2048) return colors[value / 2048];
+
+  return colors[2048];
 }
 
 export function setTileColor(tile) {
