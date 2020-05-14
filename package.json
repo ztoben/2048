@@ -11,7 +11,7 @@
     "@travi/any": "2.0.8",
     "core-js": "3.4.0",
     "lodash.isequal": "4.5.0",
-    "register-service-worker": "1.6.2",
+    "register-service-worker": "1.7.1",
     "vue": "2.6.10",
     "vue2-hammer": "2.1.2"
   },
