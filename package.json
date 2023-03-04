@@ -29,7 +29,7 @@
     "sass": "1.28.0",
     "sass-loader": "10.0.5",
     "vue-template-compiler": "2.6.12",
-    "webpack-pwa-manifest": "4.2.0"
+    "webpack-pwa-manifest": "4.3.0"
   },
   "eslintConfig": {
     "root": true,
